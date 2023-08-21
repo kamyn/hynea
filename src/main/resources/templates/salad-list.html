@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Salads</title>
+</head>
+<body>
+<div th:switch="${items}">
+  <h2 th:case="null">Not found</h2>
+  <div th:case="*">
+    <div th:each="item : ${items}">
+      <div>
+        <p th:text="${item.menu_item.title}" style="margin: 5px 0;"/>
+        <p th:text="${item.menu_item.price}" style="margin: 5px 0;"/>
+      </div>
+    </div><br>
+  </div>
+</div>
+</body>
+</html>

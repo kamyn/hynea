@@ -1,12 +1,11 @@
 package ru.hynea.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -16,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class MenuItemBreakfast {
     @Id
     private Long id;
-    @OneToOne
-    private MenuItem menuItem;
+    @OneToMany
+    private List<MenuItem> menu_item;
     @OneToOne
     private Breakfast breakfast;
 }

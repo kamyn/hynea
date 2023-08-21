@@ -17,5 +17,5 @@ public class Salad {
     @Id
     private Long id;
     @OneToOne
-    private MenuItem menuItem;
+    private MenuItem menu_item;
 }

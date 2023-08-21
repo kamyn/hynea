@@ -9,11 +9,10 @@
     <h2 th:case="null">Not found</h2>
     <div th:case="*">
         <div th:each="item : ${items}">
-            <div>
-                <p th:text="${item.id}" style="margin: 5px 0;"/>
-                <p th:text="${item.title}" style="margin: 5px 0;"/>
-                <p th:text="${item.price}" style="margin: 5px 0;"/>
-            </div>
+            <p th:text="${item.title}" style="margin: 5px 0;"/>
+            <ul th:each="ingred : ${item.ingredientsList}">
+                <li th:text="${ingred.ingredient.title}"></li>
+            </ul>
         </div><br>
     </div>
 </div>
