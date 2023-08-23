@@ -1,0 +1,104 @@
+.div,
+.div1,
+.div2 {
+  position: absolute;
+  top: 199px;
+  left: 619px;
+  font-size: var(--font-size-13xl);
+  text-decoration: underline;
+  font-weight: 300;
+}
+.div1,
+.div2 {
+  left: 867px;
+}
+.div2 {
+  left: 1077px;
+}
+.hynea-word-logo-arab-and-greec-icon {
+  position: absolute;
+  top: 46px;
+  left: 73px;
+  width: 213px;
+  height: 213px;
+  object-fit: cover;
+}
+.fotor-2023082313959-1-icon,
+.fotor-2023082313959-2-icon,
+.fotor-2023082313959-3-icon {
+  position: absolute;
+  top: 366px;
+  left: 126px;
+  width: 308px;
+  height: 215.65px;
+  object-fit: cover;
+}
+.fotor-2023082313959-2-icon,
+.fotor-2023082313959-3-icon {
+  left: 515px;
+}
+.fotor-2023082313959-3-icon {
+  left: 903px;
+}
+.i,
+.i1,
+.i2,
+.i3,
+.i4,
+.i5 {
+  position: absolute;
+  top: 595px;
+  left: 266px;
+  font-weight: 300;
+}
+.i1,
+.i2,
+.i3,
+.i4,
+.i5 {
+  left: 1043px;
+}
+.i2,
+.i3,
+.i4,
+.i5 {
+  left: 650px;
+}
+.i3,
+.i4,
+.i5 {
+  top: 630px;
+  left: 374px;
+}
+.i4,
+.i5 {
+  left: 1151px;
+}
+.i5 {
+  left: 763px;
+}
+.div3,
+.hynea {
+  position: absolute;
+  top: 46px;
+  left: 379px;
+  font-size: 58px;
+  font-family: var(--font-caveat);
+}
+.div3 {
+  top: 119px;
+  left: 640px;
+  font-size: 28px;
+}
+.macbook-air-1 {
+  position: relative;
+  background-color: #f6f0e7;
+  width: 100%;
+  height: 832px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+

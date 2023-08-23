@@ -24,6 +24,6 @@ public class MenuItem {
 
     private Integer price;
 
-    @OneToMany(mappedBy="menuItems")
+    @OneToMany(mappedBy="menuItem")
     private List<MenuItemIngredient> ingredientsList;
 }

@@ -5,26 +5,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.hynea.model.MenuItem;
-import ru.hynea.model.MenuItemIngredient;
-import ru.hynea.model.User;
-import ru.hynea.service.MenuItemIngredientService;
 import ru.hynea.service.MenuItemService;
 
 import java.util.List;
 
 @Controller
-public class MenuItemController {
+public class IndexController {
     @Autowired
     private final MenuItemService menuItemService;
-
-    public MenuItemController(MenuItemService menuItemService) {
+    public IndexController(MenuItemService menuItemService) {
         this.menuItemService = menuItemService;
     }
 
-    @GetMapping("/menu")
-    public String findAll(Model model) {
-        List<MenuItem> items = menuItemService.findAll();
-        model.addAttribute("items", items);
-        return "user-list";
+    @GetMapping("/")
+    public String main(Model model) {
+        List<MenuItem> menuItemList = menuItemService.findAll();
+        model.addAttribute("menuItems", menuItemList);
+        return "index";
     }
 }

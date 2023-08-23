@@ -15,10 +15,10 @@ public class SaladController {
     private final SaladService saladService;
     public SaladController(SaladService saladService) { this.saladService = saladService;}
 
-    @GetMapping("/salad")
+    @GetMapping("/salads")
     public String getSalads(Model model) {
         List<Salad> salads = saladService.findAll();
-        model.addAttribute("items", salads);
+        model.addAttribute("saladsList", salads);
         return "salad-list";
     }
 }

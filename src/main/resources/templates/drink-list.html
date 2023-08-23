@@ -5,13 +5,13 @@
   <title>Salads</title>
 </head>
 <body>
-<div th:switch="${saladsList}">
+<div th:switch="${drinksList}">
   <h2 th:case="null">Not found</h2>
   <div th:case="*">
-    <div th:each="salad : ${saladsList}">
+    <div th:each="drink : ${drinksList}">
       <div>
-        <p th:text="${salad.menu_item.title}" style="margin: 5px 0;"/>
-        <p th:text="${salad.menu_item.price}" style="margin: 5px 0;"/>
+        <p th:text="${drink.menu_item.title}" style="margin: 5px 0;"/>
+        <p th:text="${drink.menu_item.price}" style="margin: 5px 0;"/>
       </div>
     </div><br>
   </div>

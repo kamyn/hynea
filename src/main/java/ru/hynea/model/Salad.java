@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class Salad {
     @Id
     private Long id;
+
     @OneToOne
     private MenuItem menu_item;
 }

@@ -17,11 +17,9 @@ public class MenuItemIngredient {
     @Id
     private Long id;
 
-//    private Long menu_item_ingredient_id;
-
     @ManyToOne
     @JoinColumn(name = "menu_item_id", insertable = false, updatable = false)
-    private MenuItem menuItems;
+    private MenuItem menuItem;
 
     @OneToOne
     @JoinColumn(name = "ingredient_id", insertable = false, updatable = false)

@@ -15,8 +15,12 @@ import java.util.List;
 public class MenuItemBreakfast {
     @Id
     private Long id;
-    @OneToMany
-    private List<MenuItem> menu_item;
+
     @OneToOne
+    @JoinColumn(name = "menu_item_id", insertable = false, updatable = false)
+    private MenuItem menu_item;
+
+    @ManyToOne
+    @JoinColumn(name = "breakfast_id", insertable = false, updatable = false)
     private Breakfast breakfast;
 }
