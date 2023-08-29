@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add menu Item</title>
+</head>
+<body> <!-- title, serve_time, weight, price !-->
+  <form action="#" th:action="@{/menu-item-add}" th:object="${menuItem}" method="post">
+      <label for="title">Название:</label> <br>
+      <input id="title" type="text" th:field="*{title}" placeholder="Название"><br>
+
+      <label for="serve-time">Время сервировки:</label> <br>
+      <input id="serve-time" type="text" th:field="*{serve_time}" placeholder="Время сервировки"><br>
+
+      <label for="weight">Вес:</label> <br>
+      <input id="weight" type="text" th:field="*{weight}" placeholder="Вес"><br>
+
+      <label for="price">Цена:</label> <br>
+      <input id="price" type="text" th:field="*{price}" placeholder="Цена"> <br>
+
+      <input type="submit" value="Добавить блюдо">
+  </form>
+</body>
+</html>

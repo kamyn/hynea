@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name="ingredient", schema="hynea")
 public class Ingredient {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private Integer dosage;

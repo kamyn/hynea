@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name="breakfast", schema="hynea")
 public class Breakfast {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;

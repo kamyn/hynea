@@ -14,11 +14,12 @@ import java.util.List;
 @Table(name="menu_item", schema="hynea")
 public class MenuItem {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
 
-    private Integer serveTime;
+    private Integer serve_time;
 
     private Integer weight;
 

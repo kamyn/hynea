@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name="drink", schema="hynea")
 public class Drink {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne

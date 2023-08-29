@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name="menu_item_breakfast", schema="hynea")
 public class MenuItemBreakfast {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne

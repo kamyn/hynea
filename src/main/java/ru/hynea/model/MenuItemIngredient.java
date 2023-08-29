@@ -15,6 +15,7 @@ import java.util.List;
 @Table(name="menu_item_ingredient", schema="hynea")
 public class MenuItemIngredient {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne

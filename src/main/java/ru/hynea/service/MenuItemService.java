@@ -14,7 +14,15 @@ public class MenuItemService {
         this.menuItemRepository = menuItemRepository;
     }
 
+    public MenuItem findById(Long id) {
+        return menuItemRepository.getOne(id);
+    }
+
     public List<MenuItem> findAll() {
         return menuItemRepository.findAll();
+    }
+
+    public MenuItem saveMenuItem(MenuItem menuItem) {
+        return menuItemRepository.save(menuItem);
     }
 }
