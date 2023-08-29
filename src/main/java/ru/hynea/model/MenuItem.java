@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 @Data
@@ -27,4 +29,6 @@ public class MenuItem {
 
     @OneToMany(mappedBy="menuItem")
     private List<MenuItemIngredient> ingredientsList;
+
+    private String image_name;
 }

@@ -11,8 +11,8 @@ import java.util.List;
 
 @Controller
 public class DrinkController {
-    @Autowired
     private final DrinkService drinkService;
+    @Autowired
     public DrinkController(DrinkService drinkService) {
         this.drinkService = drinkService;
     }

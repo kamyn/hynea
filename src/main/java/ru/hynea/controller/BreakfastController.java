@@ -13,8 +13,8 @@ import java.util.List;
 
 @Controller
 public class BreakfastController {
-    @Autowired
     private final BreakfastService breakfastService;
+    @Autowired
     public BreakfastController(BreakfastService breakfastService) {
         this.breakfastService = breakfastService;
     }

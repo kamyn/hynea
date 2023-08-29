@@ -11,8 +11,8 @@ import java.util.List;
 
 @Controller
 public class SaladController {
-    @Autowired
     private final SaladService saladService;
+    @Autowired
     public SaladController(SaladService saladService) { this.saladService = saladService;}
 
     @GetMapping("/salads")

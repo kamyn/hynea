@@ -3,12 +3,12 @@ VALUES
 ('testuser1', 'pbkdf2:sha256:150000$kmRJEFJB$'),
 ('testuser2', 'pbkdf2:sha256:150000$9XuBAGv3$');
 
-INSERT INTO hynea.menu_item ("title", "serve_time", "weight", "price")
+INSERT INTO hynea.menu_item ("title", "serve_time", "weight", "price", "image_name")
 VALUES
-('Burger', 10, 250, 1299),
-('Fries', 5, 150, 299),
-('Salad', 5, 100, 799),
-('Soft Drink', 2, 350, 199);
+('Burger', 10, 250, 1299, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp'),
+('Fries', 5, 150, 299, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp'),
+('Salad', 5, 100, 799, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp'),
+('Soft Drink', 2, 350, 199, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp');
 
 INSERT INTO hynea.ingredient ("title", "dosage")
 VALUES
@@ -32,11 +32,11 @@ VALUES
 (3, 4),
 (3, 5);
 
-INSERT INTO hynea.breakfast ("title", "price")
+INSERT INTO hynea.breakfast ("title", "price", "image_name")
 VALUES
-('Pancakes', 599),
-('Oatmeal', 399),
-('Fruit Bowl', 299);
+('Pancakes', 599, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp'),
+('Oatmeal', 399, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp'),
+('Fruit Bowl', 299, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp');
 
 INSERT INTO hynea.menu_item_breakfast ("menu_item_id", "breakfast_id")
 VALUES

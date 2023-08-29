@@ -22,5 +22,7 @@ public class Breakfast {
 
     @OneToMany(mappedBy="breakfast")
     private List<MenuItemBreakfast> menuItemBreakfastList;
+
+    private String image_name;
 }
 

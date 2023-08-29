@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>Salads</title>
+  <title>HYNEA | Салаты</title>
 </head>
 <body>
 <div th:switch="${saladsList}">
@@ -10,6 +10,7 @@
   <div th:case="*">
     <div th:each="salad : ${saladsList}">
       <div>
+        <img th:src="@{${'/img/' + salad.menu_item.image_name}}" height="200" width="300"/>
         <p th:text="${salad.menu_item.title}" style="margin: 5px 0;"/>
         <p th:text="${salad.menu_item.price}" style="margin: 5px 0;"/>
       </div>

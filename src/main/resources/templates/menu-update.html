@@ -2,10 +2,20 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Add menu Item</title>
+    <title>Menu update</title>
 </head>
 <body> <!-- title, serve_time, weight, price !-->
-  <form action="#" th:action="@{/menu-item-add}" th:object="${menuItem}" method="post">
+    <div th:switch="${menuItems}">
+        <h2 th:case="null">Not found</h2>
+        <div th:case="*" >
+            <div th:each="menuItem: ${menuItems}">
+                <p th:text="${menuItem.title} + ', ' + ${menuItem.serve_time} + ' мин, ' + ${menuItem.weight} + ' грамм, ' +
+              ${menuItem.price} + ' руб'" style="margin: 5px 0;"></p>
+            </div>
+        </div>
+    </div>
+
+  <form action="#" th:action="@{/menu-update}" th:object="${newMenuItem}" method="post" enctype="multipart/form-data">
       <label for="title">Название:</label> <br>
       <input id="title" type="text" th:field="*{title}" placeholder="Название"><br>
 
@@ -18,7 +28,14 @@
       <label for="price">Цена:</label> <br>
       <input id="price" type="text" th:field="*{price}" placeholder="Цена"> <br>
 
+      <label for="menuItemImgId">Загрузить картинку:</label> <br>
+      <input id="menuItemImgId" type="file" name="image"> <br>
+
       <input type="submit" value="Добавить блюдо">
   </form>
+
+  <p th:text="${error}" th:if="${error}"></p>
+  <p th:text="${message}" th:if="${message}"></p>
+
 </body>
 </html>

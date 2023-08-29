@@ -11,10 +11,10 @@ import ru.hynea.service.MenuItemService;
 import java.util.List;
 
 @Controller
-public class IndexController {
-    @Autowired
+public class MenuController {
     private final MenuItemService menuItemService;
-    public IndexController(MenuItemService menuItemService) {
+    @Autowired
+    public MenuController(MenuItemService menuItemService) {
         this.menuItemService = menuItemService;
     }
 
@@ -22,17 +22,6 @@ public class IndexController {
     public String main(Model model) {
         List<MenuItem> menuItemList = menuItemService.findAll();
         model.addAttribute("menuItems", menuItemList);
-        return "index";
-    }
-
-    @GetMapping("/menu-item-add")
-    public String addMenuItemForm(MenuItem menuItem) {
-        return "menu-item-add";
-    }
-
-    @PostMapping("/menu-item-add")
-    public String addMenuItem(MenuItem menuItem) {
-        menuItemService.saveMenuItem(menuItem);
-        return "redirect:/";
+        return "menu";
     }
 }

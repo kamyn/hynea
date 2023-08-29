@@ -2,6 +2,7 @@ create table hynea.breakfast (
     id bigserial not null,
     price integer,
     title varchar(255),
+    image_name varchar(255),
     primary key (id)
 );
 
@@ -24,6 +25,7 @@ create table hynea.menu_item (
     serve_time integer,
     weight integer,
     title varchar(255),
+    image_name varchar(255),
     primary key (id)
 );
 

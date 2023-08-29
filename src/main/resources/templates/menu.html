@@ -5,13 +5,20 @@
   <title>HYNEA</title>
 </head>
 <body>
-<div th:switch="${menuItems}">
-  <h2 th:case="null">Not found</h2>
+  <div>
+    <a href="/breakfasts">Завтраки</a>
+    <a href="/salads">Салаты</a>
+    <a href="/drinks">Напитки</a>
+  </div>
+  <div th:switch="${menuItems}">
+    <h2 th:case="null">Not found</h2>
 
-  <div th:case="*" >
-    <div th:each="menuItem: ${menuItems}">
-      <p th:text="${menuItem.title} + ', ' + ${menuItem.serve_time} + ' мин, ' + ${menuItem.weight} + ' грамм, ' +
-          ${menuItem.price} + ' руб'" style="margin: 5px 0;"></p>
+    <div th:case="*" >
+      <div th:each="menuItem: ${menuItems}">
+        <img th:src="@{${'/img/' + menuItem.image_name}}" height="200" width="300"/>
+        <p th:text="${menuItem.title} + ', ' + ${menuItem.serve_time} + ' мин, ' + ${menuItem.weight} + ' грамм, ' +
+            ${menuItem.price} + ' руб'" style="margin: 5px 0;"></p>
+      </div>
     </div>
   </div>
 
@@ -24,6 +31,5 @@
 <!--      </ul>-->
 <!--    </div><br>-->
 <!--  </div>-->
-</div>
 </body>
 </html>
