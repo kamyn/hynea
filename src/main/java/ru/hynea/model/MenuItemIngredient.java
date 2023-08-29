@@ -18,11 +18,11 @@ public class MenuItemIngredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "menu_item_id", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "menu_item_id")
     private MenuItem menuItem;
 
-    @OneToOne
-    @JoinColumn(name = "ingredient_id", insertable = false, updatable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 }

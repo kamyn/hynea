@@ -8,8 +8,8 @@ import java.util.List;
 
 @Service
 public class BreakfastService {
-    @Autowired
     private final BreakfastRepository breakfastRepository;
+    @Autowired
     public BreakfastService(BreakfastRepository breakfastRepository) {
         this.breakfastRepository = breakfastRepository;
     }

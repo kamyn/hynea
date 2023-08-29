@@ -9,13 +9,13 @@
         <h2 th:case="null">Not found</h2>
         <div th:case="*" >
             <div th:each="menuItem: ${menuItems}">
-                <p th:text="${menuItem.title} + ', ' + ${menuItem.serve_time} + ' мин, ' + ${menuItem.weight} + ' грамм, ' +
+                <p th:text="${menuItem.id} + ': ' + ${menuItem.title} + ', ' + ${menuItem.serve_time} + ' мин, ' + ${menuItem.weight} + ' грамм, ' +
               ${menuItem.price} + ' руб'" style="margin: 5px 0;"></p>
             </div>
         </div>
     </div>
 
-  <form action="#" th:action="@{/menu-update}" th:object="${newMenuItem}" method="post" enctype="multipart/form-data">
+  <form action="#" th:action="@{/menu-create}" th:object="${newMenuItem}" method="post" enctype="multipart/form-data">
       <label for="title">Название:</label> <br>
       <input id="title" type="text" th:field="*{title}" placeholder="Название"><br>
 
@@ -28,14 +28,22 @@
       <label for="price">Цена:</label> <br>
       <input id="price" type="text" th:field="*{price}" placeholder="Цена"> <br>
 
+      <label for="ingredients">Ингредиенты:</label> <br>
+      <textarea id="ingredients" rows="10" cols="45" name="ingredients" placeholder="Ингредиенты"></textarea> <br>
+
       <label for="menuItemImgId">Загрузить картинку:</label> <br>
       <input id="menuItemImgId" type="file" name="image"> <br>
 
       <input type="submit" value="Добавить блюдо">
   </form>
 
-  <p th:text="${error}" th:if="${error}"></p>
-  <p th:text="${message}" th:if="${message}"></p>
+  <div style="margin-top: 20px;">
+      Удалить блюдо:
+      <form action="#" th:action="@{/menu-delete}" method="post">
+          <input type="text" name="menuItemId" placeholder="Номер блюда"> <br>
+          <input type="submit" value="Удалить">
+      </form>
+  </div>
 
 </body>
 </html>

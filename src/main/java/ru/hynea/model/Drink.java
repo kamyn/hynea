@@ -15,6 +15,6 @@ public class Drink {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private MenuItem menu_item;
 }

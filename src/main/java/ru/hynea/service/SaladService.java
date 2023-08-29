@@ -8,8 +8,8 @@ import java.util.List;
 
 @Service
 public class SaladService {
-    @Autowired
     private final SaladRepository saladRepository;
+    @Autowired
     public SaladService(SaladRepository saladRepository) {
         this.saladRepository = saladRepository;
     }

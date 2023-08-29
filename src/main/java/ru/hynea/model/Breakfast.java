@@ -20,7 +20,7 @@ public class Breakfast {
 
     private Integer price;
 
-    @OneToMany(mappedBy="breakfast")
+    @OneToMany(mappedBy="breakfast", cascade = CascadeType.ALL)
     private List<MenuItemBreakfast> menuItemBreakfastList;
 
     private String image_name;

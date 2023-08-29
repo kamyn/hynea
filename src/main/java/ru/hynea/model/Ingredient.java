@@ -17,6 +17,6 @@ public class Ingredient {
     private String title;
     private Integer dosage;
 
-    @OneToOne(mappedBy="ingredient")
+    @OneToOne(mappedBy="ingredient", cascade = CascadeType.ALL)
     private MenuItemIngredient menuItemIngredient;
 }

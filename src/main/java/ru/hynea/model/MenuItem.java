@@ -27,7 +27,7 @@ public class MenuItem {
 
     private Integer price;
 
-    @OneToMany(mappedBy="menuItem")
+    @OneToMany(mappedBy="menuItem", cascade = CascadeType.ALL)
     private List<MenuItemIngredient> ingredientsList;
 
     private String image_name;
