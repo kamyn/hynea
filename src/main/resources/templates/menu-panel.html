@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu panel</title>
+</head>
+<body>
+    <div th:switch="${menuItems}">
+        <h2 th:case="null">Not found</h2>
+        <div th:case="*" >
+            <div th:each="menuItem: ${menuItems}">
+                <p th:text="${menuItem.id} + ': ' + ${menuItem.title} + ', ' + ${menuItem.serveTime} + ' мин, ' + ${menuItem.weight} + ' грамм, ' +
+              ${menuItem.price} + ' руб'" style="margin: 5px 0;"></p>
+            </div>
+        </div>
+    </div>
+
+  <form style="margin-top: 20px;" action="#" th:action="@{/menu-create}" th:object="${newMenuItem}" method="post" enctype="multipart/form-data">
+      <label for="title">Название:</label> <br>
+      <input id="title" type="text" th:field="*{title}" placeholder="Название"><br>
+
+      <label for="serve-time">Время сервировки:</label> <br>
+      <input id="serve-time" type="text" th:field="*{serveTime}" placeholder="Время сервировки"><br>
+
+      <label for="weight">Вес:</label> <br>
+      <input id="weight" type="text" th:field="*{weight}" placeholder="Вес"><br>
+
+      <label for="price">Цена:</label> <br>
+      <input id="price" type="text" th:field="*{price}" placeholder="Цена"> <br>
+
+      <label for="ingredients">Ингредиенты:</label> <br>
+      <textarea id="ingredients" rows="10" cols="23" th:field="*{ingredients}" placeholder="Ингредиенты"></textarea> <br>
+
+      <label for="menuItemImgId">Загрузить картинку:</label> <br>
+      <input id="menuItemImgId" type="file" name="image"> <br>
+
+      <input type="submit" value="Добавить блюдо">
+  </form>
+
+  <div style="margin-top: 20px;">
+      Удалить блюдо:
+      <form action="#" th:action="@{/menu-delete}" method="post">
+          <input type="text" name="menuItemId" placeholder="Номер блюда"> <br>
+          <input type="submit" value="Удалить">
+      </form>
+  </div>
+
+    <div style="margin-top: 20px;">
+        Изменить блюдо:
+        <form th:if="${updateMenuItem == null}" action="#" th:action="@{/menu-update-request}" method="post">
+            <input type="text" name="updateMenuItemId" placeholder="Номер блюда"> <br>
+            <input type="submit" value="Изменить">
+        </form>
+
+        <form th:if="${updateMenuItem}" action="#" th:action="@{/menu-update}" th:object="${updateMenuItem}" method="post">
+            <label for="editItemId">Индентификатор:</label> <br>
+            <input id="editItemId" type="text" readonly="readonly" th:value="*{id}" th:field="*{id}"> <br>
+
+            <label for="editItemTitle">Название:</label> <br>
+            <input id="editItemTitle" type="text" th:value="*{title}" th:field="*{title}"> <br>
+
+            <label for="editItemServeTime">Время сервировки:</label> <br>
+            <input id="editItemServeTime" type="text" th:value="*{serveTime}" th:field="*{serveTime}"> <br>
+
+            <label for="editItemWeight">Вес:</label> <br>
+            <input id="editItemWeight" type="text" th:value="*{weight}" th:field="*{weight}"> <br>
+
+            <label for="editItemPrice">Цена:</label> <br>
+            <input id="editItemPrice" type="text" th:value="*{price}" th:field="*{price}"> <br>
+
+            <label for="editItemIngredients">Ингредиенты:</label> <br>
+            <textarea id="editItemIngredients" rows="10" cols="23" th:text="*{ingredients}" th:field="*{ingredients}">
+            </textarea> <br>
+
+            <input type="submit" value="Изменить">
+        </form>
+    </div>
+
+</body>
+</html>

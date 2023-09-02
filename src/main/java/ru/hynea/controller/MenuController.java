@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.hynea.dto.MenuItemDto;
 import ru.hynea.model.MenuItem;
 import ru.hynea.service.MenuItemService;
 
@@ -20,7 +21,7 @@ public class MenuController {
 
     @GetMapping("/")
     public String main(Model model) {
-        List<MenuItem> menuItemList = menuItemService.findAll();
+        List<MenuItemDto> menuItemList = menuItemService.findAll();
         model.addAttribute("menuItems", menuItemList);
         return "menu";
     }

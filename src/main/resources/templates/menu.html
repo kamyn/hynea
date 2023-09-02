@@ -15,21 +15,12 @@
 
     <div th:case="*" >
       <div th:each="menuItem: ${menuItems}">
-        <img th:src="@{${'/img/' + menuItem.image_name}}" height="200" width="300"/>
-        <p th:text="${menuItem.title} + ', ' + ${menuItem.serve_time} + ' мин, ' + ${menuItem.weight} + ' грамм, ' +
+        <img th:src="@{${'/img/' + menuItem.imageName}}" height="200" width="300"/>
+        <p th:text="${menuItem.title} + ', ' + ${menuItem.serveTime} + ' мин, ' + ${menuItem.weight} + ' грамм, ' +
             ${menuItem.price} + ' руб'" style="margin: 5px 0;"></p>
+        <p th:text="${menuItem.ingredients}" style="white-space: pre-wrap; margin: 5px 0;"></p>
       </div>
     </div>
   </div>
-
-  <!-- list of items ingredients !-->
-<!--  <div th:case="*">-->
-<!--    <div th:each="menuItem : ${menuItems}">-->
-<!--      <p th:text="${menuItem.title}" style="margin: 5px 0;"/>-->
-<!--      <ul th:each="ingredient : ${menuItem.ingredientsList}">-->
-<!--        <li th:text="${ingredient.ingredient.title + ', ' + ingredient.ingredient.dosage}"></li>-->
-<!--      </ul>-->
-<!--    </div><br>-->
-<!--  </div>-->
 </body>
 </html>

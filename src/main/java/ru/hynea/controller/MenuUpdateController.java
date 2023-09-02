@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import ru.hynea.dto.MenuItemDto;
 import ru.hynea.model.Ingredient;
 import ru.hynea.model.MenuItem;
 import ru.hynea.service.MenuItemService;
@@ -30,20 +31,17 @@ public class MenuUpdateController {
     @Value("${images.path}")
     private String imagesPath;
 
-    @GetMapping("/menu-update")
+    @GetMapping("/menu-panel")
     public String menuList(Model model) {
-        List<MenuItem> menuItemList = menuItemService.findAll();
+        List<MenuItemDto> menuItemList = menuItemService.findAll();
         model.addAttribute("menuItems", menuItemList);
-        model.addAttribute("newMenuItem", new MenuItem());
-        return "menu-update";
+        model.addAttribute("newMenuItem", new MenuItemDto());
+        return "menu-panel";
     }
 
     @PostMapping("/menu-create")
-    public String addMenuItem(MenuItem newMenuItem,
-                              @RequestParam String ingredients,
+    public String addMenuItem(MenuItemDto newMenuItem,
                               @RequestParam MultipartFile image) throws IOException {
-
-        menuItemService.setIngredients(newMenuItem, ingredients);
 
         if (image != null) {
             File imageDir = new File(imagesPath);
@@ -52,16 +50,34 @@ public class MenuUpdateController {
             }
             String uuid = UUID.randomUUID().toString();
             String imageName = uuid + '.' + image.getOriginalFilename();
-            newMenuItem.setImage_name(imageName);
+            newMenuItem.setImageName(imageName);
             image.transferTo(new File(imagesPath + "/" + imageName));
         }
         menuItemService.saveMenuItem(newMenuItem);
-        return "redirect:/menu-update";
+        return "redirect:/menu-panel";
     }
 
     @PostMapping("/menu-delete")
     public String deleteMenuItem(@RequestParam Long menuItemId) {
         menuItemService.deleteById(menuItemId);
-        return "redirect:/menu-update";
+        return "redirect:/menu-panel";
+    }
+
+    @PostMapping("/menu-update-request")
+    public String updateMenuItemRequest(@RequestParam Long updateMenuItemId,
+                                        Model model) {
+        List<MenuItemDto> menuItemList = menuItemService.findAll();
+        model.addAttribute("menuItems", menuItemList);
+        model.addAttribute("newMenuItem", new MenuItemDto());
+
+        MenuItemDto menuItem = menuItemService.findById(updateMenuItemId);
+        model.addAttribute("updateMenuItem", menuItem);
+        return "/menu-panel";
+    }
+
+    @PostMapping("/menu-update")
+    public String updateMenuItem(MenuItemDto updateMenuItem) {
+        menuItemService.saveMenuItem(updateMenuItem);
+        return "redirect:/menu-panel";
     }
 }

@@ -57,25 +57,43 @@ create table hynea.users (
 );
 
 alter table if exists hynea.drink
+    drop constraint if exists menu_item_drink_fk;
+
+alter table if exists hynea.menu_item_breakfast
+    drop constraint if exists menu_item_breakfast_fk1;
+
+alter table if exists hynea.menu_item_breakfast
+    drop constraint if exists menu_item_breakfast_fk2;
+
+alter table if exists hynea.menu_item_ingredient
+    drop constraint if exists menu_item_ingredient_fk1;
+
+alter table if exists hynea.menu_item_ingredient
+    drop constraint if exists menu_item_ingredient_fk2;
+
+alter table if exists hynea.salad
+    drop constraint if exists menu_item_salad_fk;
+
+alter table if exists hynea.drink
     add constraint menu_item_drink_fk
-    foreign key (menu_item_id) references hynea.menu_item;
+    foreign key (menu_item_id) references hynea.menu_item on delete cascade;
 
 alter table if exists hynea.menu_item_breakfast
     add constraint menu_item_breakfast_fk1
-    foreign key (breakfast_id) references hynea.breakfast;
+    foreign key (breakfast_id) references hynea.breakfast on delete cascade;
 
 alter table if exists hynea.menu_item_breakfast
     add constraint menu_item_breakfast_fk2
-    foreign key (menu_item_id) references hynea.menu_item;
+    foreign key (menu_item_id) references hynea.menu_item on delete cascade;
 
 alter table if exists hynea.menu_item_ingredient
     add constraint menu_item_ingredient_fk1
-    foreign key (ingredient_id) references hynea.ingredient;
+    foreign key (ingredient_id) references hynea.ingredient on delete cascade;
 
 alter table if exists hynea.menu_item_ingredient
     add constraint menu_item_ingredient_fk2
-    foreign key (menu_item_id) references hynea.menu_item;
+    foreign key (menu_item_id) references hynea.menu_item on delete cascade;
 
 alter table if exists hynea.salad
     add constraint menu_item_salad_fk
-    foreign key (menu_item_id) references hynea.menu_item;
+    foreign key (menu_item_id) references hynea.menu_item on delete cascade;
