@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <link rel="stylesheet" href="/static/main.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
   <title>HYNEA</title>
 </head>
 <body>
-  <div>
-    <a href="/breakfasts">Завтраки</a>
-    <a href="/salads">Салаты</a>
-    <a href="/drinks">Напитки</a>
-  </div>
-  <div th:switch="${menuItems}">
-    <h2 th:case="null">Not found</h2>
+  <header>
+    <img src="/static/img/hynea-logo.png" />
+    <h1>Ресторан HYNEA</h1>
+    <nav>
+      <a href="#">Завтраки</a>
+      <a href="#">Салаты</a>
+      <a href="#">Напитки</a>
+    </nav>
+  </header>
 
-    <div th:case="*" >
-      <div th:each="menuItem: ${menuItems}">
-        <img th:src="@{${'/img/' + menuItem.imageName}}" height="200" width="300"/>
-        <p th:text="${menuItem.title} + ', ' + ${menuItem.serveTime} + ' мин, ' + ${menuItem.weight} + ' грамм, ' +
-            ${menuItem.price} + ' руб'" style="margin: 5px 0;"></p>
-        <p th:text="${menuItem.ingredients}" style="white-space: pre-wrap; margin: 5px 0;"></p>
+  <main>
+    <div th:switch="${menuItems}">
+      <div th:case="null"><p>Sorry, no connection to database</p></div>
+      <div th:case="*">
+        <div class="grid">
+          <a href="#" class="card" th:each="menuItem : ${menuItems}">
+            <img th:src="@{${'/img/' + menuItem.imageName}}">
+            <h3 th:text="${menuItem.title}"></h3>
+            <p th:text="${menuItem.price} + ' ₽'"></p>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
+
 </body>
 </html>

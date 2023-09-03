@@ -20,7 +20,7 @@ public class MenuController {
     }
 
     @GetMapping("/")
-    public String main(Model model) {
+    public String getMenu(Model model) {
         List<MenuItemDto> menuItemList = menuItemService.findAll();
         model.addAttribute("menuItems", menuItemList);
         return "menu";
