@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
-  <link rel="stylesheet" href="/static/main.css" />
+  <link rel="stylesheet" href="/static/menu.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
   <title>HYNEA</title>
@@ -13,9 +13,10 @@
     <img src="/static/img/hynea-logo.png" />
     <h1>Ресторан HYNEA</h1>
     <nav>
-      <a href="#">Завтраки</a>
-      <a href="#">Салаты</a>
-      <a href="#">Напитки</a>
+      <a href="/">Меню</a>
+      <a href="/breakfasts">Завтраки</a>
+      <a href="/salads">Салаты</a>
+      <a href="/drinks">Напитки</a>
     </nav>
   </header>
 
@@ -24,7 +25,7 @@
       <div th:case="null"><p>Sorry, no connection to database</p></div>
       <div th:case="*">
         <div class="grid">
-          <a href="#" class="card" th:each="menuItem : ${menuItems}">
+          <a th:href="@{${'/menu?id=' + menuItem.id}}" class="card" th:each="menuItem : ${menuItems}">
             <img th:src="@{${'/img/' + menuItem.imageName}}">
             <h3 th:text="${menuItem.title}"></h3>
             <p th:text="${menuItem.price} + ' ₽'"></p>
@@ -33,6 +34,10 @@
       </div>
     </div>
   </main>
+
+  <footer>
+    <p>Санкт-Петербург, Проспект Ветеранов 228, 10:00 - 2:00</p>
+  </footer>
 
 </body>
 </html>

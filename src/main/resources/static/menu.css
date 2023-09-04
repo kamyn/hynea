@@ -12,51 +12,55 @@ header {
   margin: 0 auto;
   margin-top: 2%;
   max-width: 83%;
-
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
 header img {
-    max-height: 150px;
+    max-width: 150px;
 }
 
 header h1 {
+    flex-grow: 1;
 }
 
 nav {
   display: flex;
   justify-content: right;
+  gap: 20px;
 }
 
 nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-right: 1rem;
+  color: #000;
+  text-decoration: underline;
+  font-size: 20px;
 }
 
 .grid {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   max-width: 85%;
-  margin: 5% auto;
+  margin: 3% auto;
 }
 
 .card {
-  flex: 1 0 300px;
+  flex: 1 0 230px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   max-width: 30%;
 
   background: #f8f3ed;
-  padding: 2%;
+  padding: 1%;
   border-radius: 5px;
   box-shadow: 2px 4px 16px rgba(0,0,0,.06);
 } 
 
 .card img {
-  height: 200px;
+  max-height: 150px;
   object-fit: cover;
 }
 
@@ -68,6 +72,13 @@ nav a {
 .card a {
   color: #333;
   text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  background-color: #f6f0e7; /* Замените на цвет фона вашего футера */
+  color: #000; /* Замените на цвет текста */
+  padding: 20px;
 }
 
 /* Медиа-запросы */

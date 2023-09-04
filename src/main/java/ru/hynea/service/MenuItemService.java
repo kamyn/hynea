@@ -1,6 +1,5 @@
 package ru.hynea.service;
 
-import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hynea.converter.MenuItemConverter;
@@ -28,7 +27,10 @@ public class MenuItemService {
     }
 
     public List<MenuItemDto> findAll() {
-        return menuItemRepository.findAll().stream().map(MenuItemConverter::toDto).collect(Collectors.toList());
+        return menuItemRepository.findAll()
+                .stream()
+                .map(MenuItemConverter::toDto)
+                .collect(Collectors.toList());
     }
 
     public void saveMenuItem(MenuItemDto menuItemDto) {

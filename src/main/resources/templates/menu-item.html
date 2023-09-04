@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${menuItem.title}"></title>
+    <link rel="stylesheet" href="/static/menu-item.css" />
+</head>
+<body>
+
+<div id="description">
+    <div id="image">
+        <img th:src="@{${'/img/' + menuItem.imageName}}">
+    </div>
+    <div id="info">
+        <h3 th:text="${menuItem.title + ', ' + menuItem.price + ' ₽'}"></h3>
+        <h4>Состав:</h4>
+        <p id="ingredients" th:text="${menuItem.ingredients}"></p>
+        <h4>Время сервировки:</h4>
+        <p th:text="${menuItem.serveTime + ' мин'}"></p>
+        <h4>Вес:</h4>
+        <p th:text="${menuItem.weight + ' г.'}"></p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -2,9 +2,12 @@ package ru.hynea.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.hynea.converter.MenuItemConverter;
+import ru.hynea.dto.MenuItemDto;
 import ru.hynea.model.Salad;
 import ru.hynea.repository.SaladRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SaladService {
@@ -14,7 +17,10 @@ public class SaladService {
         this.saladRepository = saladRepository;
     }
 
-    public List<Salad> findAll() {
-        return saladRepository.findAll();
+    public List<MenuItemDto> findAll() {
+        return saladRepository.findAll()
+                .stream()
+                .map(x -> MenuItemConverter.toDto(x.getMenu_item()))
+                .collect(Collectors.toList());
     }
 }

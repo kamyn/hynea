@@ -1,0 +1,44 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #f6f0e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#description {
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+}
+
+#image {
+    margin-right: 20px;
+}
+
+img {
+    max-height: 250px;
+}
+
+#info {
+    text-align: left;
+}
+
+#ingredients {
+    white-space: break-spaces
+}
+
+p {
+    margin: 0.3% 0;
+}
+
+h3 {
+    margin: 0.3% 0;
+}
+
+h4 {
+    margin: 0.8% 0;
+}
