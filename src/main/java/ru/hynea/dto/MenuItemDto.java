@@ -1,10 +1,6 @@
 package ru.hynea.dto;
 
-import jakarta.persistence.*;
 import lombok.Data;
-import ru.hynea.model.MenuItemIngredient;
-
-import java.util.List;
 
 @Data
 public class MenuItemDto {

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${breakfast.title}"></title>
+    <link rel="stylesheet" href="/static/menu-item.css" />
+</head>
+<body>
+
+<div id="description">
+    <div id="image">
+        <img th:src="@{${'/img/' + breakfast.imageName}}">
+    </div>
+    <div id="info">
+        <h3 th:text="${breakfast.title + ', ' + breakfast.price + ' ₽'}"></h3>
+        <h4>Состав:</h4>
+        <ul>
+            <li th:each="menuItem : ${breakfast.menuItemsList}">
+                <a th:href="@{${'/menu?id=' + menuItem.id}}" th:text="${menuItem.title}"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

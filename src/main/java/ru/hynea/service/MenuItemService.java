@@ -1,22 +1,25 @@
 package ru.hynea.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hynea.converter.MenuItemConverter;
 import ru.hynea.dto.MenuItemDto;
+import ru.hynea.model.Breakfast;
 import ru.hynea.model.MenuItem;
+import ru.hynea.model.MenuItemBreakfast;
+import ru.hynea.repository.BreakfastRepository;
 import ru.hynea.repository.MenuItemRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class MenuItemService {
+
     private final MenuItemRepository menuItemRepository;
-    @Autowired
-    public MenuItemService(MenuItemRepository menuItemRepository) {
-        this.menuItemRepository = menuItemRepository;
-    }
+    private final BreakfastRepository breakfastRepository;
 
     public MenuItemDto findById(Long id) {
         return MenuItemConverter.toDto(menuItemRepository.findById(id).orElse(new MenuItem()));
@@ -33,6 +36,7 @@ public class MenuItemService {
                 .collect(Collectors.toList());
     }
 
+    // TODO update
     public void saveMenuItem(MenuItemDto menuItemDto) {
         if (menuItemDto.getId() != null) {
             var rec = menuItemRepository.findById(menuItemDto.getId()).orElse(null);

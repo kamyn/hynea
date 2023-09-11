@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Menu panel</title>
+    <link rel="stylesheet" href="/static/menu-panel.css" />
 </head>
 <body>
     <div th:switch="${menuItems}">
@@ -15,65 +16,89 @@
         </div>
     </div>
 
-  <form style="margin-top: 20px;" action="#" th:action="@{/menu-create}" th:object="${newMenuItem}" method="post" enctype="multipart/form-data">
-      <label for="title">Название:</label> <br>
-      <input id="title" type="text" th:field="*{title}" placeholder="Название"><br>
+    <div id="forms">
+        <div class="form-action">
+            <form action="#" th:action="@{/menu-create}" th:object="${newMenuItem}" method="post" enctype="multipart/form-data">
+                <label for="title">Название:</label> <br>
+                <input id="title" type="text" th:field="*{title}" placeholder="Название"><br>
 
-      <label for="serve-time">Время сервировки:</label> <br>
-      <input id="serve-time" type="text" th:field="*{serveTime}" placeholder="Время сервировки"><br>
+                <label for="serve-time">Время сервировки:</label> <br>
+                <input id="serve-time" type="text" th:field="*{serveTime}" placeholder="Время сервировки"><br>
 
-      <label for="weight">Вес:</label> <br>
-      <input id="weight" type="text" th:field="*{weight}" placeholder="Вес"><br>
+                <label for="weight">Вес:</label> <br>
+                <input id="weight" type="text" th:field="*{weight}" placeholder="Вес"><br>
 
-      <label for="price">Цена:</label> <br>
-      <input id="price" type="text" th:field="*{price}" placeholder="Цена"> <br>
+                <label for="price">Цена:</label> <br>
+                <input id="price" type="text" th:field="*{price}" placeholder="Цена"> <br>
 
-      <label for="ingredients">Ингредиенты:</label> <br>
-      <textarea id="ingredients" rows="10" cols="23" th:field="*{ingredients}" placeholder="Ингредиенты"></textarea> <br>
+                <label for="ingredients">Ингредиенты:</label> <br>
+                <textarea id="ingredients" rows="10" cols="23" th:field="*{ingredients}" placeholder="Ингредиенты"></textarea> <br>
 
-      <label for="menuItemImgId">Загрузить картинку:</label> <br>
-      <input id="menuItemImgId" type="file" name="image"> <br>
+                <label for="menuItemImgId">Загрузить картинку:</label> <br>
+                <input id="menuItemImgId" type="file" name="image"> <br>
 
-      <input type="submit" value="Добавить блюдо">
-  </form>
+                <input type="submit" value="Добавить блюдо">
+            </form>
+        </div>
 
-  <div style="margin-top: 20px;">
-      Удалить блюдо:
-      <form action="#" th:action="@{/menu-delete}" method="post">
-          <input type="text" name="menuItemId" placeholder="Номер блюда"> <br>
-          <input type="submit" value="Удалить">
-      </form>
-  </div>
 
-    <div style="margin-top: 20px;">
-        Изменить блюдо:
-        <form th:if="${updateMenuItem == null}" action="#" th:action="@{/menu-update-request}" method="post">
-            <input type="text" name="updateMenuItemId" placeholder="Номер блюда"> <br>
-            <input type="submit" value="Изменить">
-        </form>
+        <div class="form-action">
+            Удалить блюдо:
+            <form action="#" th:action="@{/menu-delete}" method="post">
+                <input type="text" name="menuItemId" placeholder="Номер блюда"> <br>
+                <input type="submit" value="Удалить">
+            </form>
+        </div>
 
-        <form th:if="${updateMenuItem}" action="#" th:action="@{/menu-update}" th:object="${updateMenuItem}" method="post">
-            <label for="editItemId">Индентификатор:</label> <br>
-            <input id="editItemId" type="text" readonly="readonly" th:value="*{id}" th:field="*{id}"> <br>
+        <div class="form-action">
+            Изменить блюдо:
+            <form th:if="${updateMenuItem == null}" action="#" th:action="@{/menu-update-request}" method="post">
+                <input type="text" name="updateMenuItemId" placeholder="Номер блюда"> <br>
+                <input type="submit" value="Изменить">
+            </form>
 
-            <label for="editItemTitle">Название:</label> <br>
-            <input id="editItemTitle" type="text" th:value="*{title}" th:field="*{title}"> <br>
+            <form th:if="${updateMenuItem}" action="#" th:action="@{/menu-update}" th:object="${updateMenuItem}" method="post">
+                <label for="editItemId">Индентификатор:</label> <br>
+                <input id="editItemId" type="text" readonly="readonly" th:value="*{id}" th:field="*{id}"> <br>
 
-            <label for="editItemServeTime">Время сервировки:</label> <br>
-            <input id="editItemServeTime" type="text" th:value="*{serveTime}" th:field="*{serveTime}"> <br>
+                <label for="editItemTitle">Название:</label> <br>
+                <input id="editItemTitle" type="text" th:value="*{title}" th:field="*{title}"> <br>
 
-            <label for="editItemWeight">Вес:</label> <br>
-            <input id="editItemWeight" type="text" th:value="*{weight}" th:field="*{weight}"> <br>
+                <label for="editItemServeTime">Время сервировки:</label> <br>
+                <input id="editItemServeTime" type="text" th:value="*{serveTime}" th:field="*{serveTime}"> <br>
 
-            <label for="editItemPrice">Цена:</label> <br>
-            <input id="editItemPrice" type="text" th:value="*{price}" th:field="*{price}"> <br>
+                <label for="editItemWeight">Вес:</label> <br>
+                <input id="editItemWeight" type="text" th:value="*{weight}" th:field="*{weight}"> <br>
 
-            <label for="editItemIngredients">Ингредиенты:</label> <br>
-            <textarea id="editItemIngredients" rows="10" cols="23" th:text="*{ingredients}" th:field="*{ingredients}">
+                <label for="editItemPrice">Цена:</label> <br>
+                <input id="editItemPrice" type="text" th:value="*{price}" th:field="*{price}"> <br>
+
+                <label for="editItemIngredients">Ингредиенты:</label> <br>
+                <textarea id="editItemIngredients" rows="10" cols="23" th:text="*{ingredients}" th:field="*{ingredients}">
             </textarea> <br>
 
-            <input type="submit" value="Изменить">
-        </form>
+                <input type="submit" value="Изменить">
+            </form>
+        </div>
+
+        <div class="form-action">
+            <form action="#" th:action="@{/breakfast-create}" th:object="${newBreakfastItem}" method="post" enctype="multipart/form-data">
+                <label for="breakfastTitle">Название:</label> <br>
+                <input id="breakfastTitle" type="text" th:field="*{title}" placeholder="Название"><br>
+
+                <label for="breakfastPrice">Цена:</label> <br>
+                <input id="breakfastPrice" type="text" th:field="*{price}" placeholder="Цена"><br>
+
+<!--                TODO-->
+<!--                <label for="breakfastMenuItems">Блюда:</label> <br>-->
+<!--                <input id="breakfastMenuItems" type="text" th:field="*{}" placeholder="Блюда"><br>-->
+
+                <label for="breakfastImgId">Загрузить картинку:</label> <br>
+                <input id="breakfastImgId" type="file" name="breakfastImage"> <br>
+
+                <input type="submit" value="Добавить завтрак">
+            </form>
+        </div>
     </div>
 
 </body>

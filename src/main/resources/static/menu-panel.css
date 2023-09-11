@@ -1,0 +1,9 @@
+#forms {
+    display: flex;
+    margin: 30px 0 auto;
+}
+
+.form-action {
+    max-width: 25%;
+    padding: 15px;
+}

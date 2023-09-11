@@ -1,5 +1,6 @@
 package ru.hynea.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,18 +16,12 @@ import ru.hynea.service.SaladService;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class MenuController {
+
     private final MenuItemService menuItemService;
     private final SaladService saladService;
-    private  final DrinkService drinkService;
-    @Autowired
-    public MenuController(MenuItemService menuItemService,
-                          SaladService saladService,
-                          DrinkService drinkService) {
-        this.menuItemService = menuItemService;
-        this.saladService = saladService;
-        this.drinkService = drinkService;
-    }
+    private final DrinkService drinkService;
 
     @GetMapping("/")
     public String getMenu(Model model) {

@@ -1,5 +1,6 @@
 package ru.hynea.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hynea.converter.MenuItemConverter;
@@ -10,12 +11,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class DrinkService {
+
     private final DrinkRepository drinkRepository;
-    @Autowired
-    public DrinkService(DrinkRepository drinkRepository) {
-        this.drinkRepository = drinkRepository;
-    }
 
     public List<MenuItemDto> findAll() {
         return drinkRepository.findAll()
