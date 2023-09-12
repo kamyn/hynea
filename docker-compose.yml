@@ -1,0 +1,38 @@
+version: '2'
+services:
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - POSTGRES_DB=$POSTGRESDB_DATABASE
+      - POSTGRES_USER=$POSTGRESDB_USER
+      - POSTGRES_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
+    volumes:
+      - db:/var/lib/postgres
+    ports:
+      - $POSTGRESDB_LOCAL_PORT:$POSTGRESDB_DOCKER_PORT
+
+  app:
+    image: hynea-test
+    restart: on-failure
+    env_file: ./.env
+    ports:
+      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+    environment:
+      SPRING_APPLICATION_JSON: '{
+                "spring.datasource.url"  : "jdbc:postgresql://db:$POSTGRESDB_DOCKER_PORT/$POSTGRESDB_DATABASE?useSSL=false",
+                "spring.datasource.driver-class-name" : "org.postgresql.Driver",
+                "spring.datasource.username" : "$POSTGRESDB_USER",
+                "spring.datasource.password" : "$POSTGRESDB_ROOT_PASSWORD",
+                "spring.jpa.show-sql" : "false",
+                "spring.jpa.hibernate.ddl-auto" : "update", 
+                "images.path" : "/www/img"
+              }'
+    depends_on:
+      - db
+    volumes:
+      - /Users/admin/images:/www/img
+
+volumes:
+  db:

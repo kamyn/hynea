@@ -1,3 +1,5 @@
+CREATE SCHEMA hynea;
+
 create table hynea.breakfast (
     id bigserial not null,
     price integer,
