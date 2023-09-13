@@ -2,33 +2,38 @@ package ru.hynea.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
+import lombok.Setter;
 
-import java.io.File;
 import java.util.List;
 
-@Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Getter
+@Setter
 @Table(name="menu_item", schema="hynea")
 public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="title")
     private String title;
 
-    private Integer serve_time;
+    @Column(name="serve_time")
+    private Integer serveTime;
 
+    @Column(name="weight")
     private Integer weight;
 
+    @Column(name="price")
     private Integer price;
 
     @OneToMany(mappedBy="menuItem", cascade = CascadeType.ALL)
     private List<MenuItemIngredient> ingredientsList;
 
-    private String image_name;
+    @Column(name="image_name")
+    private String imageName;
 }

@@ -36,10 +36,10 @@ public class MenuItemConverterTest {
 
         Mockito.when(menuItem.getId()).thenReturn(1L);
         Mockito.when(menuItem.getTitle()).thenReturn("Test Menu Item");
-        Mockito.when(menuItem.getServe_time()).thenReturn(15);
+        Mockito.when(menuItem.getServeTime()).thenReturn(15);
         Mockito.when(menuItem.getWeight()).thenReturn(200);
         Mockito.when(menuItem.getPrice()).thenReturn(10);
-        Mockito.when(menuItem.getImage_name()).thenReturn("item.jpg");
+        Mockito.when(menuItem.getImageName()).thenReturn("item.jpg");
         Mockito.when(menuItem.getIngredientsList()).thenReturn(List.of(ingredient1));
 
         MenuItemDto menuItemDto = MenuItemConverter.toDto(menuItem);
@@ -67,10 +67,10 @@ public class MenuItemConverterTest {
 
         assertEquals(2L, menuItem.getId());
         assertEquals("Test Menu Item 2", menuItem.getTitle());
-        assertEquals(15, menuItem.getServe_time());
+        assertEquals(15, menuItem.getServeTime());
         assertEquals(250, menuItem.getWeight());
         assertEquals(15, menuItem.getPrice());
-        assertEquals("item2.jpg", menuItem.getImage_name());
+        assertEquals("item2.jpg", menuItem.getImageName());
 
         assertEquals(1, menuItem.getIngredientsList().size());
         MenuItemIngredient menuItemIngredient = menuItem.getIngredientsList().get(0);

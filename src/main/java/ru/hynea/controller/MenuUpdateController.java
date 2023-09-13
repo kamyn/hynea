@@ -1,7 +1,6 @@
 package ru.hynea.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,15 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ru.hynea.dto.BreakfastItemDto;
 import ru.hynea.dto.MenuItemDto;
-import ru.hynea.model.Ingredient;
-import ru.hynea.model.MenuItem;
 import ru.hynea.service.MenuItemService;
 
-import java.util.HashMap;
-import java.util.List;
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 @Controller

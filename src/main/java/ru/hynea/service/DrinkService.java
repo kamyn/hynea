@@ -1,12 +1,11 @@
 package ru.hynea.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hynea.converter.MenuItemConverter;
 import ru.hynea.dto.MenuItemDto;
-import ru.hynea.model.Drink;
 import ru.hynea.repository.DrinkRepository;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +18,7 @@ public class DrinkService {
     public List<MenuItemDto> findAll() {
         return drinkRepository.findAll()
                 .stream()
-                .map(x -> MenuItemConverter.toDto(x.getMenu_item()))
+                .map(x -> MenuItemConverter.toDto(x.getMenuItem()))
                 .collect(Collectors.toList());
     }
 }
