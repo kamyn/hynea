@@ -14,7 +14,7 @@ services:
       - $POSTGRESDB_LOCAL_PORT:$POSTGRESDB_DOCKER_PORT
 
   app:
-    image: hynea-test
+    build: .
     restart: on-failure
     env_file: ./.env
     ports:

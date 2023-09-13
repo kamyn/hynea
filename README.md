@@ -1,7 +1,5 @@
 ## HYNEA
 
-------
-
 The simple CRUD web service of restraunt menu on Spring.
 
 In the main page visitor can see menu items and ingredients
@@ -17,8 +15,7 @@ add, remove and update menu items in the `/menu-panel` page.
 ### Deploy
 
  - Build project from source: `./gradlew clean bootJar`
- - Build docker image: `docker build -t hynea-test .`
- - Run docker compose file: `docker compose up`
+ - Run docker compose file: `docker compose up --build`
 
  The site will available at `localhost:8080`
 
