@@ -5,21 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.util.HashMap;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MenuItemDto {
+public class BreakfastItemDto {
     private Long id;
 
     private String title;
 
-    private Integer serveTime;
-
-    private Integer weight;
-
     private Integer price;
 
-    private String ingredients;
-
     private String imageName;
+
+    private HashMap<Long, String> menuItemsList;
 }

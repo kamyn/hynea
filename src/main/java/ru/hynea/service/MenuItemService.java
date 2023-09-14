@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.hynea.converter.MenuItemConverter;
 import ru.hynea.dto.MenuItemDto;
 import ru.hynea.model.MenuItem;
+<<<<<<< HEAD
+=======
+import ru.hynea.repository.BreakfastRepository;
+>>>>>>> main
 import ru.hynea.repository.MenuItemRepository;
 
 import java.util.List;
@@ -36,7 +40,7 @@ public class MenuItemService {
         if (menuItemDto.getId() != null) {
             var rec = menuItemRepository.findById(menuItemDto.getId()).orElse(null);
             if (rec != null) {
-                menuItemDto.setImageName(rec.getImage_name());
+                menuItemDto.setImageName(rec.getImageName());
                 menuItemRepository.deleteById(menuItemDto.getId());
             }
         }

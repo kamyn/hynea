@@ -11,10 +11,10 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
-@Table(name="menu_item", schema="hynea")
-public class MenuItem {
+@Getter
+@Table(name="breakfast", schema="hynea")
+public class Breakfast {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,18 +22,13 @@ public class MenuItem {
     @Column(name="title")
     private String title;
 
-    @Column(name="serve_time")
-    private Integer serveTime;
-
-    @Column(name="weight")
-    private Integer weight;
-
     @Column(name="price")
     private Integer price;
 
-    @OneToMany(mappedBy="menuItem", cascade = CascadeType.ALL)
-    private List<MenuItemIngredient> ingredientsList;
+    @OneToMany(mappedBy="breakfast", cascade = CascadeType.ALL)
+    private List<MenuItemBreakfast> menuItemBreakfastList;
 
     @Column(name="image_name")
     private String imageName;
 }
+
