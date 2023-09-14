@@ -5,10 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.hynea.converter.MenuItemConverter;
 import ru.hynea.dto.MenuItemDto;
 import ru.hynea.model.MenuItem;
-<<<<<<< HEAD
-=======
-import ru.hynea.repository.BreakfastRepository;
->>>>>>> main
 import ru.hynea.repository.MenuItemRepository;
 
 import java.util.List;
