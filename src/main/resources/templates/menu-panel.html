@@ -80,25 +80,6 @@
                 <input type="submit" value="Изменить">
             </form>
         </div>
-
-        <div class="form-action">
-            <form action="#" th:action="@{/breakfast-create}" th:object="${newBreakfastItem}" method="post" enctype="multipart/form-data">
-                <label for="breakfastTitle">Название:</label> <br>
-                <input id="breakfastTitle" type="text" th:field="*{title}" placeholder="Название"><br>
-
-                <label for="breakfastPrice">Цена:</label> <br>
-                <input id="breakfastPrice" type="text" th:field="*{price}" placeholder="Цена"><br>
-
-<!--                TODO-->
-<!--                <label for="breakfastMenuItems">Блюда:</label> <br>-->
-<!--                <input id="breakfastMenuItems" type="text" th:field="*{}" placeholder="Блюда"><br>-->
-
-                <label for="breakfastImgId">Загрузить картинку:</label> <br>
-                <input id="breakfastImgId" type="file" name="breakfastImage"> <br>
-
-                <input type="submit" value="Добавить завтрак">
-            </form>
-        </div>
     </div>
 
 </body>
