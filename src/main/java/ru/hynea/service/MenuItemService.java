@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.hynea.converter.MenuItemConverter;
 import ru.hynea.dto.MenuItemDto;
 import ru.hynea.model.MenuItem;
+<<<<<<< HEAD
+=======
 import ru.hynea.repository.BreakfastRepository;
+>>>>>>> main
 import ru.hynea.repository.MenuItemRepository;
 
 import java.util.List;
@@ -16,7 +19,6 @@ import java.util.stream.Collectors;
 public class MenuItemService {
 
     private final MenuItemRepository menuItemRepository;
-    private final BreakfastRepository breakfastRepository;
 
     public MenuItemDto findById(Long id) {
         return MenuItemConverter.toDto(menuItemRepository.findById(id).orElse(new MenuItem()));
