@@ -25,8 +25,8 @@ public class MenuItemConverter {
         String ingredients = sb.toString();
 
         return new MenuItemDto(menuItem.getId(), menuItem.getTitle(),
-                menuItem.getServe_time(), menuItem.getWeight(), menuItem.getPrice(),
-                ingredients, menuItem.getImage_name());
+                menuItem.getServeTime(), menuItem.getWeight(), menuItem.getPrice(),
+                ingredients, menuItem.getImageName());
     }
 
     public static MenuItem toMenuItem(MenuItemDto menuItemDto) {
@@ -35,9 +35,9 @@ public class MenuItemConverter {
         menuItem.setId(menuItemDto.getId());
         menuItem.setTitle(menuItemDto.getTitle());
         menuItem.setPrice(menuItemDto.getPrice());
-        menuItem.setServe_time(menuItemDto.getServeTime());
+        menuItem.setServeTime(menuItemDto.getServeTime());
         menuItem.setWeight(menuItemDto.getWeight());
-        menuItem.setImage_name(menuItemDto.getImageName());
+        menuItem.setImageName(menuItemDto.getImageName());
 
         List<MenuItemIngredient> ingredientList = new ArrayList<>();
         String[] lines = menuItemDto.getIngredients().split("\n");

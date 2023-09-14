@@ -2,15 +2,15 @@ package ru.hynea.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.List;
-
-@Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Setter
+@Getter
 @Table(name="menu_item_breakfast", schema="hynea")
 public class MenuItemBreakfast {
     @Id
@@ -19,7 +19,7 @@ public class MenuItemBreakfast {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "menu_item_id")
-    private MenuItem menu_item;
+    private MenuItem menuItem;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "breakfast_id")

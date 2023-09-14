@@ -18,7 +18,7 @@ public class SaladService {
     public List<MenuItemDto> findAll() {
         return saladRepository.findAll()
                 .stream()
-                .map(x -> MenuItemConverter.toDto(x.getMenu_item()))
+                .map(x -> MenuItemConverter.toDto(x.getMenuItem()))
                 .collect(Collectors.toList());
     }
 }

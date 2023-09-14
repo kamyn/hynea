@@ -2,16 +2,15 @@ package ru.hynea.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Setter
+@Getter
 @Table(name="menu_item_ingredient", schema="hynea")
 public class MenuItemIngredient {
     @Id

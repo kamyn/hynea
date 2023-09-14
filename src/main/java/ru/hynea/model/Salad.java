@@ -2,13 +2,15 @@ package ru.hynea.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Setter
+@Getter
 @Table(name="salad", schema="hynea")
 public class Salad {
     @Id
@@ -16,5 +18,5 @@ public class Salad {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private MenuItem menu_item;
+    private MenuItem menuItem;
 }

@@ -1,10 +1,15 @@
 package ru.hynea.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BreakfastItemDto {
     private Long id;
 
@@ -15,16 +20,4 @@ public class BreakfastItemDto {
     private String imageName;
 
     private HashMap<Long, String> menuItemsList;
-
-    public BreakfastItemDto() {
-
-    }
-
-    public  BreakfastItemDto(Long id, String title, Integer price, String imageName, HashMap<Long, String> menuItemsList) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.imageName = imageName;
-        this.menuItemsList = menuItemsList;
-    }
 }
