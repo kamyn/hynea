@@ -44,7 +44,7 @@ public class MenuController {
     @GetMapping("/menu")
     public String getItemDescription(@RequestParam Long id,
                                      Model model) {
-        var menuItem = menuItemService.findById(id);
+        MenuItemDto menuItem = menuItemService.findById(id);
         model.addAttribute("menuItem", menuItem);
         return "menu-item";
     }

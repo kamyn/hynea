@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 import ru.hynea.converter.MenuItemConverter;
 import ru.hynea.dto.MenuItemDto;
 import ru.hynea.model.Ingredient;
@@ -16,7 +17,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MenuItemConverterTest {
-
+    @Spy
+    private MenuItemConverter menuItemConverter;
     @Mock
     private MenuItem menuItem;
 
@@ -42,7 +44,7 @@ public class MenuItemConverterTest {
         Mockito.when(menuItem.getImageName()).thenReturn("item.jpg");
         Mockito.when(menuItem.getIngredientsList()).thenReturn(List.of(ingredient1));
 
-        MenuItemDto menuItemDto = MenuItemConverter.toDto(menuItem);
+        MenuItemDto menuItemDto = menuItemConverter.toDto(menuItem);
 
         assertEquals(1L, menuItemDto.getId());
         assertEquals("Test Menu Item", menuItemDto.getTitle());
@@ -63,7 +65,7 @@ public class MenuItemConverterTest {
                 "Ingredient 2 : 150",
                 "item2.jpg");
 
-        MenuItem menuItem = MenuItemConverter.toMenuItem(menuItemDto);
+        MenuItem menuItem = menuItemConverter.toMenuItem(menuItemDto);
 
         assertEquals(2L, menuItem.getId());
         assertEquals("Test Menu Item 2", menuItem.getTitle());

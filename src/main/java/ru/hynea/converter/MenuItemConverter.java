@@ -8,28 +8,21 @@ import ru.hynea.model.MenuItemIngredient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class MenuItemConverter {
-    public static MenuItemDto toDto(MenuItem menuItem) {
-        StringBuilder sb = new StringBuilder();
-        for (MenuItemIngredient ing : menuItem.getIngredientsList()) {
-            sb.append(ing.getIngredient().getTitle());
-            sb.append(" : ");
-            sb.append(ing.getIngredient().getDosage());
-            sb.append("\n");
-        }
-        if (sb.length() > 0) {
-            sb.setLength(sb.length() - 1);
-        }
-        String ingredients = sb.toString();
-
+    public MenuItemDto toDto(MenuItem menuItem) {
+        String ingredients = menuItem.getIngredientsList()
+                .stream()
+                .map(ing -> ing.getIngredient().getTitle() + " : " + ing.getIngredient().getDosage())
+                .collect(Collectors.joining("\n"));
         return new MenuItemDto(menuItem.getId(), menuItem.getTitle(),
                 menuItem.getServeTime(), menuItem.getWeight(), menuItem.getPrice(),
                 ingredients, menuItem.getImageName());
     }
 
-    public static MenuItem toMenuItem(MenuItemDto menuItemDto) {
+    public MenuItem toMenuItem(MenuItemDto menuItemDto) {
         MenuItem menuItem = new MenuItem();
 
         menuItem.setId(menuItemDto.getId());

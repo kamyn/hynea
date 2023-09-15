@@ -14,11 +14,12 @@ import java.util.stream.Collectors;
 public class SaladService {
 
     private final SaladRepository saladRepository;
+    private final MenuItemConverter menuItemConverter;
 
     public List<MenuItemDto> findAll() {
         return saladRepository.findAll()
                 .stream()
-                .map(x -> MenuItemConverter.toDto(x.getMenuItem()))
+                .map(x -> menuItemConverter.toDto(x.getMenuItem()))
                 .collect(Collectors.toList());
     }
 }
