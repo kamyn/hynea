@@ -1,13 +1,5 @@
 CREATE SCHEMA hynea;
 
-create table hynea.breakfast (
-    id bigserial not null,
-    price integer,
-    title varchar(255),
-    image_name varchar(255),
-    primary key (id)
-);
-
 create table hynea.drink (
     id bigserial not null,
     menu_item_id bigint,
@@ -28,13 +20,6 @@ create table hynea.menu_item (
     weight integer,
     title varchar(255),
     image_name varchar(255),
-    primary key (id)
-);
-
-create table hynea.menu_item_breakfast (
-    id bigserial not null,
-    breakfast_id bigint,
-    menu_item_id bigint,
     primary key (id)
 );
 
@@ -61,12 +46,6 @@ create table hynea.users (
 alter table if exists hynea.drink
     drop constraint if exists menu_item_drink_fk;
 
-alter table if exists hynea.menu_item_breakfast
-    drop constraint if exists menu_item_breakfast_fk1;
-
-alter table if exists hynea.menu_item_breakfast
-    drop constraint if exists menu_item_breakfast_fk2;
-
 alter table if exists hynea.menu_item_ingredient
     drop constraint if exists menu_item_ingredient_fk1;
 
@@ -78,14 +57,6 @@ alter table if exists hynea.salad
 
 alter table if exists hynea.drink
     add constraint menu_item_drink_fk
-    foreign key (menu_item_id) references hynea.menu_item on delete cascade;
-
-alter table if exists hynea.menu_item_breakfast
-    add constraint menu_item_breakfast_fk1
-    foreign key (breakfast_id) references hynea.breakfast on delete cascade;
-
-alter table if exists hynea.menu_item_breakfast
-    add constraint menu_item_breakfast_fk2
     foreign key (menu_item_id) references hynea.menu_item on delete cascade;
 
 alter table if exists hynea.menu_item_ingredient

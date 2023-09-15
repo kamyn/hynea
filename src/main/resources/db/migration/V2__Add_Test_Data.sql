@@ -32,17 +32,6 @@ VALUES
 (3, 4),
 (3, 5);
 
-INSERT INTO hynea.breakfast ("title", "price", "image_name")
-VALUES
-('Pancakes', 599, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp'),
-('Oatmeal', 399, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp'),
-('Fruit Bowl', 299, '8b9dd0ad-a14d-4f61-9af8-f6b90b374cab.beef.webp');
-
-INSERT INTO hynea.menu_item_breakfast ("menu_item_id", "breakfast_id")
-VALUES
-(1, 1),
-(3, 2);
-
 INSERT INTO hynea.salad ("menu_item_id")
 VALUES
 (3);

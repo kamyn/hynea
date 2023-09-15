@@ -15,9 +15,10 @@ import java.util.stream.Collectors;
 public class MenuItemService {
 
     private final MenuItemRepository menuItemRepository;
+    private final MenuItemConverter menuItemConverter;
 
     public MenuItemDto findById(Long id) {
-        return MenuItemConverter.toDto(menuItemRepository.findById(id).orElse(new MenuItem()));
+        return menuItemConverter.toDto(menuItemRepository.findById(id).orElse(new MenuItem()));
     }
 
     public void deleteById(Long id) {
@@ -27,19 +28,18 @@ public class MenuItemService {
     public List<MenuItemDto> findAll() {
         return menuItemRepository.findAll()
                 .stream()
-                .map(MenuItemConverter::toDto)
+                .map(menuItemConverter::toDto)
                 .collect(Collectors.toList());
     }
 
-    // TODO update
     public void saveMenuItem(MenuItemDto menuItemDto) {
         if (menuItemDto.getId() != null) {
-            var rec = menuItemRepository.findById(menuItemDto.getId()).orElse(null);
+            MenuItem rec = menuItemRepository.findById(menuItemDto.getId()).orElse(null);
             if (rec != null) {
                 menuItemDto.setImageName(rec.getImageName());
                 menuItemRepository.deleteById(menuItemDto.getId());
             }
         }
-        menuItemRepository.save(MenuItemConverter.toMenuItem(menuItemDto));
+        menuItemRepository.save(menuItemConverter.toMenuItem(menuItemDto));
     }
 }

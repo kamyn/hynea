@@ -36,12 +36,7 @@ public class MenuUpdateController {
     @PostMapping("/menu-create")
     public String addMenuItem(MenuItemDto newMenuItem,
                               @RequestParam MultipartFile image) throws IOException {
-
         if (image != null) {
-            File imageDir = new File(imagesPath);
-            if (!imageDir.exists()) {
-                imageDir.mkdir();
-            }
             String uuid = UUID.randomUUID().toString();
             String imageName = uuid + '.' + image.getOriginalFilename();
             newMenuItem.setImageName(imageName);
@@ -66,7 +61,7 @@ public class MenuUpdateController {
 
         MenuItemDto menuItem = menuItemService.findById(updateMenuItemId);
         model.addAttribute("updateMenuItem", menuItem);
-        return "/menu-panel";
+        return "menu-panel";
     }
 
     @PostMapping("/menu-update")
