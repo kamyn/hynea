@@ -8,6 +8,7 @@ import ru.hynea.model.MenuItem;
 import ru.hynea.repository.MenuItemRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,7 +19,7 @@ public class MenuItemService {
     private final MenuItemConverter menuItemConverter;
 
     public MenuItemDto findById(Long id) {
-        return menuItemConverter.toDto(menuItemRepository.findById(id).orElse(new MenuItem()));
+        return menuItemConverter.toDto(menuItemRepository.findById(id).orElse(null));
     }
 
     public void deleteById(Long id) {
@@ -34,8 +35,9 @@ public class MenuItemService {
 
     public void saveMenuItem(MenuItemDto menuItemDto) {
         if (menuItemDto.getId() != null) {
-            MenuItem rec = menuItemRepository.findById(menuItemDto.getId()).orElse(null);
-            if (rec != null) {
+            Optional<MenuItem> optRec = menuItemRepository.findById(menuItemDto.getId());
+            if (optRec.isPresent()) {
+                MenuItem rec = optRec.get();
                 menuItemDto.setImageName(rec.getImageName());
                 menuItemRepository.deleteById(menuItemDto.getId());
             }
